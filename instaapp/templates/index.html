@@ -1,17 +1,21 @@
 {%extends 'base.html'%}
 {% load bootstrap3 %}
+{% load static %}
 {% block content %}
 {{block.super}}
 <div class="container">
     {% for image in images %}
     <div class="row">
-        <div class="card">
+        
+        <div class="column1">
+            <div class="card1">
             <div style="text-align:center;">
-                <img src="{{image.image.url}}" alt="image" style="width:400px;height:400px;">
+            <img src="{{image.image.url}}" alt="image" style="width:400px;height:400px;">
                 <p>{{image.image_name}}</p>
                 <p>{{image.user}}</p>
                 <p>{{image.image_caption}}</p>
-                <a href="{% url 'profile' user.id %}"> view profile</a>
+                <a href="{% url 'profile' user.id %}" class="btn btn-default"> view profile</a>
+            </div>
             </div>
         </div>
     </div>
@@ -20,3 +24,4 @@
     {% endfor %}
     {% endblock %}
 </div>
+
