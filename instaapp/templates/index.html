@@ -1,0 +1,27 @@
+
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+{% block content %}
+{{block.super}}
+<div class="container" style="margin-left:450px;"><br><br><br>
+{% for image in images %}
+<div class="row">
+<div class="col-md-4">
+<div style="text-align:center;">
+<div class="card" style="width:400px">
+<img src="{{image.image.url}}" alt="image" style="width:400px;height:400px;">
+<div class="card-body">
+<h2 class="card-title">{{image.image_name}}</h2>
+<h3 class="card-text">{{image.user}}</h3>
+<h3 class="card-text">{{image.image_caption}}</h3>
+<a href="{% url 'profile' user.id %}" class="btn btn-primary"> view profile</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% empty %}
+<h4>NO IMAGE</h4>
+{% endfor %}
+{% endblock %}
+</div>
