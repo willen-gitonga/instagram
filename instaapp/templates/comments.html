@@ -19,7 +19,7 @@
       <div class="col-md-2 col-sm-1 "></div>
   <div class="col-md-8 col-sm-10 col-xs-12">
       <div class="card">
-      <img class="img-responsive" src="{{image.image.url}}"><br>
+      <img class="img-responsive" src="{{image.image.url}}" style="width:400px;height:400px;"><br>
       <form style="border:white"action="/comment/{{image.id}}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
         {% bootstrap_form form%}
