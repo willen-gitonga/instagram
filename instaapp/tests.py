@@ -1,29 +1,29 @@
 from django.test import TestCase
-from .models import Comments,Image,Profile
+from .models import Comment,Post,Profile
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 
-class CommentsTestClass(TestCase):
+class CommentTestClass(TestCase):
     # set up method to test for comments and instatiating the image object
 
     def setUp(self):
-        self.test_comments = Comments(comment_name= 'The good life')
+        self.test_comments = Comment(comment= 'The good life',user= 'shaw',image='jpg')
         self.test_comments.save()
 
     # Testing instance 
      
     def test_instance(self):
-        self.assertTrue(isinstance(self.test_comments, Comments))
+        self.assertTrue(isinstance(self.test_comments, Comment))
     
     # Testing the saving method 
 
     def test_save_method(self):
-        comments = Comments.objects.all()
+        comments = Comment.objects.all()
         self.assertTrue(len(comments)>0)
     #Tear down method    
 
     def tearDown(self):
-        Comments.objects.all().delete()
+        Comment.objects.all().delete()
     
      # Testing delete method 
     def test_delete_comments(self):
@@ -35,7 +35,7 @@ class ProfileTestClass(TestCase):
     # set up method to test instantiation is correct
 
     def setUp(self):
-        self.test_profile = Profile(bio='Master willen',profile_photo='imagejpg', profile_name='willen')
+        self.test_profile = Profile(bio='Master willen',profile_photo='imagejpg')
         self.test_profile.save()
     
     # Testing instance 
@@ -56,13 +56,13 @@ class ProfileTestClass(TestCase):
         self.test_profile.delete()
         self.assertEqual(len(Profile.objects.all()), 0) 
     
-class ImageTestClass(TestCase):
+class PostTestClass(TestCase):
 
     # Test instance to test that objects are instantiated correctly
     def setUp(self):
-        self.test_comments = Comments.objects.create(comment_name='Bless up')
+        self.test_comments = Comment.objects.create(comment='Bless up',image_id='1',user_id='1')
         self.test_profile = Profile.objects.create(bio='Bad man shivo',profile_photo='imagejpg')
-        self.test_image = Image(image='imagejpg',image_name='awesome',image_caption='Good image',profile=self.test_profile,comments=self.test_comments)
+        self.test_image = Post(image='imagejpg',image_name='awesome',image_caption='Good image',profile=self.test_profile,comments=self.test_comments)
         self.test_image.save()
     
     # Testing the save method

@@ -37,8 +37,18 @@ class Post(models.Model):
         return all_images
     
 class Comment(models.Model):
-   image = models.ForeignKey('Post')
-   user = models.ForeignKey(User)
-   comment = models.CharField(max_length=100)
+    image = models.ForeignKey('Post')
+    user = models.ForeignKey(User)
+    comment = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.comment
+
+    def save_comment(self):
+        self.save()
+    
+    def delete_comment(self):
+        self.delete()
+    
 
   
