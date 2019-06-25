@@ -56,23 +56,7 @@ class ProfileTestClass(TestCase):
         self.test_profile.delete()
         self.assertEqual(len(Profile.objects.all()), 0) 
     
-class PostTestClass(TestCase):
 
-    # Test instance to test that objects are instantiated correctly
-    def setUp(self):
-        self.test_comments = Comment.objects.create(comment='Bless up',image_id='1',user_id='1')
-        self.test_profile = Profile.objects.create(bio='Bad man shivo',profile_photo='imagejpg')
-        self.test_image = Post(image='imagejpg',image_name='awesome',image_caption='Good image',profile=self.test_profile,comments=self.test_comments)
-        self.test_image.save()
-    
-    # Testing the save method
-    def test_save_method(self):
-        image = Image.objects.all()
-        self.assertTrue(len(image)>0)
-    # Tear down method 
-    def tearDown(self):
-         Image.objects.all().delete()
-    
   
 
 
