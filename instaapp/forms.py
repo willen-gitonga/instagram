@@ -1,4 +1,4 @@
-from .models import Post, Comments,Profile
+from .models import Post, Comment,Profile
 from django import forms
 from django.forms import ModelForm, Textarea, IntegerField
 
@@ -20,7 +20,7 @@ class UpdateProfileForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        model=Comments
-        exclude=['user','images', 'description']
+        model=Comment
+        exclude=['user','image']
 
 

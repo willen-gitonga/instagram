@@ -9,6 +9,7 @@ urlpatterns=[
     url(r'^profile/(\d+)',views.profile,name='profile'),
     url(r'^upload$',views.upload,name='upload'),
     url(r'^edit',views.edit,name='edit'),
+    url(r'^comment/(\d+)$', views.comment, name='comment'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

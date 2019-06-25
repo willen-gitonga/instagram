@@ -15,19 +15,11 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()
 
-class Comments(models.Model):
-    comment=models.TextField(max_length=50)
-    def __str__(self):
-        return self.comment
-    
-    def save_comments(self):
-        self.save()
 
 class Post(models.Model):
     image = models.ImageField(upload_to='instaapp/')
     image_name = models.CharField(max_length=40)
     image_caption = models.TextField()
-    comments =models.ManyToManyField(Comments, blank=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
@@ -44,5 +36,9 @@ class Post(models.Model):
         all_images = cls.objects.all()
         return all_images
     
-    
+class Comment(models.Model):
+   image = models.ForeignKey('Post')
+   user = models.ForeignKey(User)
+   comment = models.CharField(max_length=100)
+
   

@@ -11,10 +11,12 @@
             <div class="card1">
             <div style="text-align:center;">
             <img src="{{image.image.url}}" alt="image" style="width:400px;height:400px;">
-                <p>{{image.image_name}}</p>
-                <p>{{image.user}}</p>
-                <p>{{image.image_caption}}</p>
+                <h3>Image name:{{image.image_name}}</h3>
+                <h3>User:{{image.user}}</h3>
+                <h3>Caption:{{image.image_caption}}</h3>
                 <a href="{% url 'profile' user.id %}" class="btn btn-default"> view profile</a>
+                <a href="{% url 'comment' image.id %}" class="btn btn-default">comment</a>
+
             </div>
             </div>
         </div>
